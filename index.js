@@ -85,11 +85,11 @@ let read = 0;
 const genre = [];// to store genres
 const author = [];// to store authors
 const diff = [];// to store difficulties
-const month = [];// to store months. for random question 
+const years = [];// to store years. for random question
 
 for (let i = 0; i< data.length; i++){// loop through data
-    let x = data[i]["Date Bought"].split(" ")[0]// to get the month only
-    month.push(x);// push month to month array
+    let x = data[i]["Date Bought"].split(" ")[2]// to get the year only
+    years.push(x);// push year to years array
 
 
 
@@ -110,20 +110,19 @@ for (let i = 0; i< data.length; i++){// loop through data
 
 //Question 2
 
-let peread = (read/total)*100;// calculate percentage read
-peread = peread.toFixed(2);// round to 2 decimal places
+let preread = (read/total)*100;// calculate percentage read
+preread = preread.toFixed(2);// round to 2 decimal places
 //Question 1
-console.log("You read "+ peread + "% of your total books."); 
+console.log("You read "+ preread + "% of your total books."); 
 //Question 2
 console.log(audio + " of the books have accompanying audiobooks.")// print audio count
 
-//Function to calculate mode of an array
 
 
 //Function to calculate mode of an array
 function mode(array)
 {
-    if(array.length == 0)// check if array is empty
+    if(array.length == 0)
         return null;
     var genres = {};
     var maxgenre = array[0], maxCount = 1;// initialize maxgenre and maxCount
@@ -133,19 +132,38 @@ function mode(array)
         if(genres[m] == null)
             genres[m] = 1;
         else
-            genres[ml]++;  
+            genres[m]++;  
         if(genres[m] > maxCount)
         {
-            maxgenre = el;
-            maxCount = genres[el];
+            maxgenre = m;
+            maxCount = genres[m];
         }
     }
     return maxgenre; 
-}
+
+
+
+    
+}  
+
+
+
+
+
+
+//come up with your own stat likemost popular month for example.
+
+// 
+
+
+
+
+
+
 
 console.log(mode(genre) + " is your most popular genre.");
 console.log(mode(author) + " is your most read author."); // print most read author
-console.log(mode(month) + " is the month when you buy the most books.");// print most popular month
+console.log(mode(years) + " is the year when you buy the most books.");// print most popular year
 
 
 
